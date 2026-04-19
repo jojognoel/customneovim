@@ -11,3 +11,5 @@ ENV PATH="$PATH:/opt/nvim-linux-x86_64/bin"
 COPY nvim /root/.config/nvim
 
 RUN nvim --headless "+Lazy! sync" "+TSUpdate" "+MasonToolsInstallSync" +qa
+
+RUN nvim --headless -c "Lazy! sync" -c "lua require('nvim-treesitter.install').prefer_git = true" -c "TSUpdateSync" -c "sleep 10" -c "qa"
